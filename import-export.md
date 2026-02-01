@@ -58,14 +58,26 @@ If you want to write your own quizzes manually, you can use the JSON format.
 
 ### Question Types
 
-| Type | Required Fields |
-|------|----------------|
-| `multiple_choice` | `choices` (array of strings), `answerIndex` (number, 0-based) |
-| `multiple_answer` | `choices` (array of strings), `answerIndices` (array of numbers) |
-| `true_false` | `answer` (boolean) |
-| `keywords` | `answer` (string or array of accepted strings) |
-| `matching` | `pairs` (array of objects: `{left: string, right: string}`) |
-| `word_bank` | `sentence` (string with `_` for blanks), `wordBank` (array of strings), `answers` (array of strings matching blanks in order) |
+All question types share these **common fields**:
+
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| `type` | string | ✅ | The question type (see below) |
+| `question` or `prompt` | string | ✅ | The question text (supports LaTeX) |
+| `id` | string | ❌ | Unique ID (auto-generated if omitted) |
+| `explanation` | string | ❌ | Explanation shown after answering |
+| `media` | string | ❌ | Image/video reference (URL, path, or data URI) |
+
+#### Type-Specific Fields
+
+| Type | Required Fields | Description |
+|------|----------------|-------------|
+| `multiple_choice` | `choices` (string[]), `answerIndex` (number) | Single correct answer from choices |
+| `multiple_answer` | `choices` (string[]), `answerIndices` (number[]) | Multiple correct answers |
+| `true_false` | `answer` (boolean) | True or false statement |
+| `keywords` | `answer` (string or string[]) | Free-form text input; `caseSensitive` (optional, default: false) |
+| `matching` | `pairs` ({left, right}[]) | Match all pairs correctly |
+| `word_bank` | `sentence` (string with `_` blanks), `wordBank` (string[]), `answers` (string[]) | Fill blanks with words from bank |
 
 ### Media Handling
 
@@ -114,36 +126,52 @@ When importing, ReQuizle merges data deeply using **IDs**:
 
 ### Comprehensive "Kitchen Sink" Example
 
-Here is a file containing every feature ReQuizle supports.
+Here is a complete example containing **all 6 question types** and every feature ReQuizle supports.
 
 ```json
 [
   {
-    "name": "Advanced Demo",
+    "name": "Complete Demo",
     "topics": [
       {
-        "name": "Media & Math",
+        "name": "Math with LaTeX",
         "questions": [
           {
             "id": "q1_math",
             "type": "multiple_choice",
             "question": "Solve for \\(x\\): \\[ x^2 - 4 = 0 \\]",
             "choices": ["\\(x = 2\\)", "\\(x = \\pm 2\\)", "\\(x = 4\\)"],
-            "answerIndex": 1
+            "answerIndex": 1,
+            "explanation": "Using the difference of squares: \\(x^2 - 4 = (x+2)(x-2) = 0\\), so \\(x = \\pm 2\\)"
           },
           {
-            "id": "q2_image_web",
+            "id": "q2_multi_answer",
+            "type": "multiple_answer",
+            "question": "Select ALL prime numbers:",
+            "choices": ["2", "4", "5", "9", "11", "15"],
+            "answerIndices": [0, 2, 4],
+            "explanation": "2, 5, and 11 are prime. 4=2×2, 9=3×3, and 15=3×5 are composite."
+          }
+        ]
+      },
+      {
+        "name": "Media Examples",
+        "questions": [
+          {
+            "id": "q3_image_web",
             "type": "true_false",
             "question": "Is this a cat?",
             "media": "https://placekitten.com/200/300",
-            "answer": true
+            "answer": true,
+            "explanation": "Yes, the image shows a cat from placekitten.com"
           },
           {
-            "id": "q3_image_local",
+            "id": "q4_image_local",
             "type": "keywords",
             "question": "What organelle is shown in 'mitochondria.png'?",
             "media": "mitochondria.png",
-            "answer": ["mitochondria", "mitochondrion"]
+            "answer": ["mitochondria", "mitochondrion"],
+            "caseSensitive": false
           }
         ]
       },
@@ -151,9 +179,9 @@ Here is a file containing every feature ReQuizle supports.
         "name": "Complex Types",
         "questions": [
           {
-            "id": "q4_matching",
+            "id": "q5_matching",
             "type": "matching",
-            "question": "Match the capital to the country",
+            "question": "Match the capital to the country:",
             "pairs": [
               {"left": "France", "right": "Paris"},
               {"left": "Japan", "right": "Tokyo"},
@@ -161,9 +189,9 @@ Here is a file containing every feature ReQuizle supports.
             ]
           },
           {
-            "id": "q5_wordbank",
+            "id": "q6_wordbank",
             "type": "word_bank",
-            "question": "Fill in the blanks",
+            "question": "Fill in the blanks:",
             "sentence": "The _ jumps over the _ dog.",
             "wordBank": ["quick", "lazy", "brown", "fox", "cat"],
             "answers": ["fox", "lazy"]
