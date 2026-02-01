@@ -107,9 +107,10 @@ When importing, ReQuizle merges data deeply using **IDs**:
 1.  **Subjects**: If a Subject ID matches, it merges the topics.
 2.  **Topics**: If a Topic ID matches, it merges the questions.
 3.  **Questions**: If a Question ID matches, it **overwrites** the existing question with the new data.
- 
+
 *Tip: If you want to force a new copy of a question, give it a new ID.*
-3.  **Media Conflicts**: If you upload a file named `diagram.png` but your library already has a *different* image named `diagram.png`, ReQuizle will warn you and allow you to resolve the conflict (e.g., replace or keep both).
+
+4.  **Media Conflicts**: If you upload a file named `diagram.png` but your library already has a *different* image named `diagram.png`, ReQuizle will warn you and allow you to resolve the conflict (e.g., replace or keep both).
 
 ### Comprehensive "Kitchen Sink" Example
 
