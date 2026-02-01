@@ -20,8 +20,10 @@ ReQuizle works directly in your browser. No account required.
 ## Features
 
 - **Focused Study Experience**: Clean, distraction-free UI with smooth animations.
-- **Mastery Tracking**: Track progress and mastery percentage for each subject and topic.
-- **Spaced Repetition**: Option to include or exclude mastered questions from the study queue.
+- **Mastery Tracking**: A question is considered "Mastered" once you answer it correctly.
+- **Smart Queueing**:
+  - Incorrect answers are automatically re-queued to appear 4-6 turns later, ensuring you learn from mistakes immediately.
+  - Mastered questions are removed from the queue (unless "Include Mastered" is enabled).
 - **Multiple Question Types**:
   - Multiple Choice
   - Multiple Answer

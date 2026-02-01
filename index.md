@@ -15,7 +15,7 @@ hero:
       link: /guide
     - theme: alt
       text: View on GitHub
-      link: https://github.com/ReQuizle/requizle-web
+      link: https://github.com/ReQuizle
 
 features:
   - title: Focused Study

@@ -11,13 +11,7 @@ export default defineConfig({
     nav: [
       {text: 'Guide', link: '/guide'},
       {text: 'Import/Export', link: '/import-export'},
-      {
-        text: 'Repositories',
-        items: [
-          {text: 'Web App', link: 'https://github.com/ReQuizle/requizle-web'},
-          {text: 'Docs / Wiki', link: 'https://github.com/ReQuizle/requizle-wiki'}
-        ]
-      }
+      {text: 'Development', link: '/development'}
     ],
 
     sidebar: [
@@ -38,7 +32,7 @@ export default defineConfig({
     ],
 
     socialLinks: [
-      {icon: 'github', link: 'https://github.com/ReQuizle/requizle-wiki'}
+      {icon: 'github', link: 'https://github.com/ReQuizle'}
     ]
   }
 })
