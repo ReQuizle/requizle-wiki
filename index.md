@@ -5,7 +5,7 @@ layout: home
 hero:
   name: "ReQuizle"
   text: "Efficient Spaced Repetition Study Tool"
-  tagline: A modern, privacy-focused web app for mastering any subject through active recall.
+  tagline: A modern, privacy-focused app for mastering any subject through active recall.
   image:
     src: /icon.svg
     alt: ReQuizle Logo
@@ -15,7 +15,7 @@ hero:
       link: /guide
     - theme: alt
       text: View on GitHub
-      link: https://github.com/ReQuizle/requizle-web
+      link: https://github.com/ReQuizle
 
 features:
   - title: 🎯 Focused Study
@@ -27,11 +27,11 @@ features:
   - title: 📝 6 Question Types
     details: Multiple Choice, Multiple Answer, True/False, Keywords, Matching, and Word Bank.
   - title: 🔒 Privacy First
-    details: All data lives locally in your browser (IndexedDB). No servers, no accounts, no tracking.
+    details: All data lives locally on your device. No servers, no accounts, no tracking.
   - title: 🖼️ Rich Media
     details: Full support for images, videos, and LaTeX math equations in questions.
   - title: 👥 Multiple Profiles
     details: Create and manage separate profiles for different users or study contexts.
-  - title: 📱 Installable PWA
-    details: Install as an app on desktop and mobile for offline access.
+  - title: 📱 Cross-Platform
+    details: Available as a web app with more platforms coming soon.
 ---

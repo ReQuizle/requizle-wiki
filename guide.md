@@ -4,7 +4,11 @@ Welcome to the complete ReQuizle User Guide. This document covers everything you
 
 ## Getting Started
 
-ReQuizle works directly in your browser with no account required. All your data stays on your device.
+ReQuizle works with no account required. All your data stays on your device.
+
+::: tip Platform-Specific Details
+For installation instructions and platform-specific features, see the [Platforms](/platforms/web) section.
+:::
 
 ### Quick Start
 

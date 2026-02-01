@@ -13,22 +13,36 @@ export default defineConfig({
     logo: '/icon.svg',
     nav: [
       {text: 'Guide', link: '/guide'},
-      {text: 'Import/Export', link: '/import-export'},
+      {text: 'File Format', link: '/import-export'},
+      {text: 'Platforms', items: [
+        {text: 'Web App', link: '/platforms/web'},
+      ]},
       {text: 'Development', link: '/development'}
     ],
 
     sidebar: [
       {
-        text: 'Introduction',
+        text: 'Getting Started',
         items: [
           {text: 'Home', link: '/'},
           {text: 'User Guide', link: '/guide'}
         ]
       },
       {
-        text: 'Advanced',
+        text: 'Reference',
         items: [
           {text: 'Import & Export', link: '/import-export'},
+        ]
+      },
+      {
+        text: 'Platforms',
+        items: [
+          {text: 'Web App', link: '/platforms/web'},
+        ]
+      },
+      {
+        text: 'Contributing',
+        items: [
           {text: 'Development', link: '/development'}
         ]
       }
