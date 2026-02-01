@@ -79,17 +79,14 @@ Use this for images hosted on the web.
 *   **Pros**: Small JSON file size.
 *   **Cons**: Requires internet to view; links may break.
 
-#### 2. Relative Paths (Local Upload)
-Use this when you want to provide image files alongside your JSON.
+#### 2. Local File References (Virtual Paths)
+Use this to reference files you have on your computer.
 ```json
 "media": "images/cell-structure.png"
 ```
-OR simply:
-```json
-"media": "cell-structure.png"
-```
-*   **Behavior**: When you import this JSON, ReQuizle will detect these paths and **prompt you to upload the corresponding files**.
-*   **Folder Structure**: The path acts as a unique ID. If two questions use `images/A.png` and `misc/A.png`, ReQuizle treats them as different files and will ask for both.
+*   **How it works**: This string acts as a **unique ID**. When you import the JSON, ReQuizle asks: *"Please upload the file that matches the name 'images/cell-structure.png'."*
+*   **Important**: You cannot use specific hard drive paths like `C:\Users\Name\Image.png` because web browsers are blocked from reading your hard drive directly.
+*   **Folder Structure**: The path acts as a unique namespace. `images/A.png` and `misc/A.png` are treated as two completely different files.
 
 #### 3. Embedded Base64 (Portable)
 Use this to create a single, standalone `.json` file with no external dependencies.
