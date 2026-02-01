@@ -84,9 +84,13 @@ Use this to reference files you have on your computer.
 ```json
 "media": "images/cell-structure.png"
 ```
-*   **How it works**: This string acts as a **unique ID**. When you import the JSON, ReQuizle asks: *"Please upload the file that matches the name 'images/cell-structure.png'."*
-*   **Important**: You cannot use specific hard drive paths like `C:\Users\Name\Image.png` because web browsers are blocked from reading your hard drive directly.
-*   **Folder Structure**: The path acts as a unique namespace. `images/A.png` and `misc/A.png` are treated as two completely different files.
+*   **How it works**: This string acts as a **unique identifier**.
+*   **Discrimination**: ReQuizle uses the *entire string* to distinct files.
+    *   If you have `"folderA/cat.png"` and `"folderB/cat.png"`, ReQuizle treats these as **different files** (Conflict).
+    *   It will ask you to upload the file for `folderA`, and then separately for `folderB`.
+*   **Absolute Paths**: You *can* use strings like `C:\Users\Name\Image.png`.
+    *   **Note**: The browser CANNOT auto-load these from your disk (security restriction).
+    *   However, they act as excellent unique labels so you know exactly which file to upload when prompted.
 
 #### 3. Embedded Base64 (Portable)
 Use this to create a single, standalone `.json` file with no external dependencies.
