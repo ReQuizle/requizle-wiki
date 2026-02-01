@@ -191,10 +191,10 @@ ReQuizle can be **installed as an app** on your device:
 
 ### Local Storage
 
-All ReQuizle data is stored **locally in your browser**:
+All ReQuizle data is stored **locally on your device**:
 
-- **State Data**: Stored in LocalStorage (profiles, progress, session state).
-- **Media Files**: Stored in IndexedDB (images, videos) to bypass LocalStorage size limits.
+- **State Data**: Stored in IndexedDB (profiles, progress, session state).
+- **Media Files**: Stored in IndexedDB (images, videos).
 
 ### No Tracking
 
@@ -212,7 +212,7 @@ To prevent data loss:
 3. To restore, use the **Import** tab and upload your backup file.
 
 ::: warning
-Browser data can be lost if you clear your browser cache or use private/incognito mode. Always export backups of important study materials!
+Data can be lost if you clear app data. Always export backups of important study materials!
 :::
 
 ---

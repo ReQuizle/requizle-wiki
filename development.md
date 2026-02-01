@@ -71,14 +71,14 @@ ReQuizle uses a single global Zustand store (`useQuizStore.ts`) that handles:
 - **Progress Tracking**: Detailed stats for every question (attempts, streak, mastered).
 - **Settings**: User preferences (delete confirmations, etc.).
 
-The store uses Zustand's `persist` middleware with a custom IndexedDB storage adapter for large data handling.
+The store uses Zustand's `persist` middleware with a custom IndexedDB storage adapter.
 
 ### Data Persistence
 
-Data is saved in two layers:
+Data is saved in IndexedDB:
 
-1. **IndexedDB (Primary)**: Stores the main state JSON (profiles, subjects, questions, progress) AND media files (images/videos).
-2. **Media References**: Large media files are stored separately with UUIDs. Questions reference them via `idb:<uuid>` strings.
+- **State**: The main state JSON (profiles, subjects, questions, progress).
+- **Media**: Large media files are stored separately with UUIDs. Questions reference them via `idb:<uuid>` strings.
 
 This approach prevents LocalStorage quota issues when dealing with large datasets or many images.
 
