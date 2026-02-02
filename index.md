@@ -33,5 +33,5 @@ features:
   - title: Multiple Profiles
     details: Create and manage separate profiles for different users or study contexts.
   - title: Cross-Platform
-    details: Available as a web app with more platforms coming soon.
+    details: Available as a web app across mobile & desktop platforms.
 ---
