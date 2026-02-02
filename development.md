@@ -210,14 +210,6 @@ Test files are co-located with their source files using the `.test.ts` or `.test
 - `quizLogic.test.ts`
 - etc.
 
-### Test Data
-
-The `test-data/` folder contains sample JSON files for testing various import scenarios:
-
-- Valid files with different question types
-- Invalid files to test error handling
-- Edge cases (empty arrays, missing fields, etc.)
-
 ---
 
 ## Documentation Development
