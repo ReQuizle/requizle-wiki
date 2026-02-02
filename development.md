@@ -84,7 +84,7 @@ This approach prevents LocalStorage quota issues when dealing with large dataset
 
 ### The "Smart Queue" Logic
 
-The application uses a **dynamic queue system** rather than a rigid SRS algorithm (like Anki's SM-2):
+The application uses a **dynamic queue system**.
 
 1. **New Session**: Loads all questions from selected topics.
 2. **Shuffling**: Fisher-Yates shuffle is applied in "Random" mode.
