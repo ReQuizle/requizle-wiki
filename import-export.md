@@ -226,7 +226,7 @@ For videos:
 
 ### 3. Local File References (with Upload)
 
-Reference files by name—you'll be prompted to upload them during import:
+Reference files by name, you'll be prompted to upload them during import:
 
 ```json
 {
