@@ -66,7 +66,7 @@ Choose how you want to study:
 | **Random** | Questions are shuffled for variety. |
 | **Topic Order** | Questions appear in the order they are defined within each topic. |
 
-You can switch modes from the **quiz header** (shuffle / list icon) or from **Settings → Behavior**; both update the same setting.
+**Default** for new sessions is **Topic order**. You can switch modes from the **quiz header** (shuffle / list icon) or from **Settings → Behavior**; both update the same setting.
 
 ### Quiz behavior (Settings)
 
@@ -76,7 +76,10 @@ Under **Settings → Behavior** you can:
 - Turn **Requeue after wrong answer** and **Requeue after skip** on or off.
 - Set **Min / Max** spacing (positions ahead) when re-queueing; values are clamped to a sensible range.
 
-Deletion confirmation toggles for subjects and profiles are in the same section.
+**Confirmations** in the same section:
+
+- **Confirm reset subject progress** and **Confirm reset topic progress**: when on, destructive resets use an in-app dialog; when off, they run immediately.
+- **Confirm subject deletion** and **Confirm profile deletion**: when on, you must type the name to delete; when subject confirmation is off, delete runs immediately from the sidebar.
 
 ---
 
@@ -88,7 +91,8 @@ The left sidebar contains:
 
 - **Subject List**: All your imported subjects.
 - **Topic Selection**: Click topics to include/exclude them from your study session.
-- **Subject Actions**: Delete subjects or reset progress.
+- **Subject & topic context menus**: **Right-click** a subject or topic (or **press and hold** on touch devices) to export, reset progress, delete a subject, or mark a topic mastered / reset topic progress. Subject export can **include progress** or **questions only** (no mastery data).
+- **Subject Actions**: Hover a subject row for the trash control (delete); other actions are in the context menu above.
 
 ### Center Area
 

@@ -21,6 +21,13 @@ ReQuizle allows you to import custom content and export full profiles for backup
 2. Click the **Download** icon next to your profile.
 3. This creates a `.rqzl` file containing all your data and images.
 
+### Single-subject JSON (left sidebar)
+
+From the **subject context menu** you can download a JSON bundle for one subject:
+
+- **Export with progress**: Includes `requizleSubjectExport: 1`, the `subject` tree, a `progress` map (topic → question → stats), and optional `_media` for embedded images.
+- **Export questions only**: Same structure but **omits** `progress` so you can share the deck without your mastery data. Importing a questions-only file **does not** wipe existing progress for that subject.
+
 ---
 
 ## JSON Format Reference

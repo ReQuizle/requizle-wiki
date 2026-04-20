@@ -4,6 +4,9 @@ All notable, user-facing changes to the **ReQuizle** project are documented here
 
 ## April 2026
 ### Added
+- **Subject export options**: Context menu can export **with progress** or **questions only** (optional `progress` in the JSON bundle).
+- **Subject & topic context menus**: Right-click a subject or topic for export, resets, delete, and topic actions; on touch devices, **press and hold** the row to open the same menu.
+- **Reset confirmations**: Settings toggles for confirming subject/topic progress resets; reset and quick-delete flows use in-app dialogs when confirmations are on.
 - **Import drag & drop**: Drop `.rqzl` / `.json` files onto the Import area in addition to file pick and paste.
 - **Settings layout**: Settings grouped into sections (Profiles, Appearance, Behavior, Data, Links) for easier navigation on mobile and desktop.
 - **Quiz behavior controls**: Configure re-queue after wrong answers and after skips, and set min/max reinsert spacing (defaults remain 4-6 positions).
@@ -12,7 +15,10 @@ All notable, user-facing changes to the **ReQuizle** project are documented here
 - **Markdown Features**: Added `||hidden text||` formatting for spoilers, standard markdown tables, blockquotes, and links.
 - **Inline Typography**: Added inline text formatting for `**bold**`, `*italic*`, `__underline__`, and `~~strikethrough~~`.
 - **Error Boundary**: Broken or corrupted questions now display a graceful error card with a "Skip Question" button instead of crashing the entire application.
-- Updated default sample topics to showcase the new Rich Text engine.
+- **Sample topics**: Updated built-in examples to showcase the new Rich Text engine.
+
+### Changed
+- **Default study order**: New sessions use **Topic order** first; random shuffle is still one click away in the quiz header or Settings.
 
 ## February 2026
 ### Added
