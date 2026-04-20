@@ -89,7 +89,8 @@ Under **Settings → Behavior** you can:
 
 The left sidebar contains:
 
-- **Subject List**: All your imported subjects.
+- **Edit content**: Link under the ReQuizle title opens the **[content editor](#content-editor)** (full page) to manage subjects, topics, questions, and media.
+- **Subject List**: All your subjects (whether added via import or the editor).
 - **Topic Selection**: Click topics to include/exclude them from your study session.
 - **Subject & topic context menus**: **Right-click** a subject or topic (or **press and hold** on touch devices) to export, reset progress, delete a subject, or mark a topic mastered / reset topic progress. Subject export can **include progress** or **questions only** (no mastery data).
 - **Subject Actions**: Hover a subject row for the trash control (delete); other actions are in the context menu above.
@@ -111,6 +112,29 @@ The right sidebar has three tabs:
 1. **Mastery**: View progress statistics for the current subject.
 2. **Import**: Import new content via **file upload**, **drag and drop** on the import area, or **paste JSON** and apply.
 3. **Settings**: Organized into sections (**Profiles**, **Appearance**, **Behavior**, **Data**, **Links & help**) for profiles, theme, quiz behavior, data tools, and documentation links.
+
+---
+
+## Content editor
+
+ReQuizle includes a **full-page content editor** so you can build decks without writing JSON.
+
+### How to open it
+
+- Click **Edit content** in the **left** sidebar (under the logo), or
+- Go directly to **`/requizle-web/edit`** after the app base URL (for example [requizle.github.io/requizle-web/edit](https://requizle.github.io/requizle-web/edit) when hosted, or `http://localhost:5173/requizle-web/edit` when running the dev server locally).
+
+The study UI and editor are separate routes; your data is shared (same profile and IndexedDB).
+
+### What you can do
+
+- **Subjects**: Add, rename, or delete subjects (destructive actions use the same in-app confirmation patterns as elsewhere).
+- **Topics**: Add, rename, or delete topics within a subject.
+- **Questions**: Add questions for any of the **six** supported types; edit prompts, answers, explanations, and type-specific fields.
+- **Multiple choice / multiple answer**: Add or remove answer choices (at least **two** choices must remain).
+- **Media**: Attach images or videos per question; preview and remove attachments. Uploaded media is stored locally like imported media (`idb:` references).
+
+Changes save into your active profile the same way as study progress.
 
 ---
 
@@ -190,11 +214,11 @@ Enhance your questions with **images and videos**.
 
 ### How to Add Media
 
-Media can be added via the JSON import format (see [Import/Export](/import-export)):
-
-1. **URL**: Link to an online image/video.
-2. **Local File**: Reference a file path, then upload when prompted.
-3. **Base64**: Embed the media directly in the JSON.
+- **In the app**: Use the **[content editor](#content-editor)** to upload and preview media per question.
+- **Via import**: Use the JSON import format (see [Import/Export](/import-export)):
+  1. **URL**: Link to an online image/video.
+  2. **Local File**: Reference a file path, then upload when prompted.
+  3. **Base64**: Embed the media directly in the JSON.
 
 ---
 

@@ -28,6 +28,14 @@ cd requizle-web
 npm install
 ```
 
+### Local dev URL (subpath / `base`)
+
+The web app is built with Vite **`base: '/requizle-web/'`** so assets and routing match [GitHub Pages project sites](https://docs.github.com/en/pages/getting-started-with-github-pages/about-github-pages#types-of-github-pages-sites). After `npm run dev`, open:
+
+`http://localhost:5173/requizle-web/`
+
+Prefer the URL **with a trailing slash** (the dev server may redirect `/requizle-web` → `/requizle-web/`). The **content editor** route is **`/requizle-web/edit`**.
+
 ### Available Commands
 
 | Command | Description |
@@ -49,6 +57,7 @@ npm install
 | **React 19** | UI framework |
 | **TypeScript** | Type safety |
 | **Vite** | Build tool and dev server |
+| **React Router** | Client-side routing (study shell vs. `/edit`) |
 | **Tailwind CSS** | Utility-first styling |
 | **Zustand** | State management (with persist middleware) |
 | **IndexedDB** | Media storage (via custom wrapper) |
@@ -69,7 +78,9 @@ ReQuizle uses a single global Zustand store (`useQuizStore.ts`) that handles:
 - **Profiles**: Multi-user support with independent data per profile.
 - **Session State**: Current subject, selected topics, active queue, study mode.
 - **Progress Tracking**: Detailed stats for every question (attempts, streak, mastered).
+- **Content (editor)**: Create, rename, and delete **subjects**, **topics**, and **questions**; updates keep media references and session state coherent (including IndexedDB cleanup when content is removed).
 - **Settings**: App-wide preferences (delete confirmations, quiz re-queue behavior, spacing min/max for wrong/skip, etc.).
+- **Import / export**: Merge behavior and `.rqzl` bundles as documented in the wiki.
 
 The store uses Zustand's `persist` middleware with a custom IndexedDB storage adapter.
 
@@ -98,16 +109,22 @@ The application uses a **dynamic queue system**.
 ```
 requizle-web/
 ├── src/
-│   ├── App.tsx               # Root component with sample data
-│   ├── main.tsx              # Entry point
+│   ├── App.tsx               # Root: theme + router outlet
+│   ├── main.tsx              # Entry: URL normalization, React mount
+│   ├── router.tsx            # Routes: study layout vs. /edit
 │   ├── index.css             # Global styles (Tailwind imports)
 │   ├── types.ts              # Global TypeScript interfaces
 │   │
+│   ├── pages/
+│   │   └── EditorPage.tsx    # Full-page content editor route
+│   │
 │   ├── components/
 │   │   ├── Layout.tsx        # Main layout wrapper
-│   │   ├── LeftSidebar.tsx   # Subject/topic navigation
+│   │   ├── LeftSidebar.tsx   # Subject/topic navigation, link to editor
 │   │   ├── CenterArea.tsx    # Question display area
 │   │   ├── RightSidebar.tsx  # Mastery, Import, Settings tabs
+│   │   ├── ContentEditor.tsx # Subject/topic/question editing UI
+│   │   ├── AppModals.tsx     # Shared confirm / prompt / message modals
 │   │   ├── QuestionCard.tsx  # Core question rendering component
 │   │   ├── ThemeToggle.tsx   # Dark/light mode toggle
 │   │   ├── Latex.tsx         # KaTeX wrapper component
@@ -130,11 +147,13 @@ requizle-web/
 │   │   ├── importValidation.ts  # JSON import parsing & validation
 │   │   ├── mediaStorage.ts      # IndexedDB wrapper for media files
 │   │   ├── indexedDBStorage.ts  # IndexedDB storage adapter for Zustand
+│   │   ├── appBaseUrl.ts        # Canonical app URL / trailing slash (base path)
+│   │   ├── contentEditor.ts     # Helpers for the editor UI
 │   │   └── quizLogic.ts         # Pure functions for scoring/queueing
 │   │
 │   └── test/                 # Test setup and utilities
 │
-├── public/                   # Static assets (icons, manifest)
+├── public/                   # Static assets (icons, manifest, sample media)
 ├── test-data/                # Sample JSON files for testing imports
 ├── coverage/                 # Test coverage reports
 └── dist/                     # Production build output
@@ -160,8 +179,19 @@ The central state store containing:
 - All profile/subject/progress data
 - Session management (start, queue, submit answer)
 - Profile CRUD operations
+- **Content CRUD** for the editor (subjects, topics, questions) and orphan media cleanup
 - Import/export logic
 - Media cleanup on subject deletion
+- **Factory reset** navigates to the canonical base URL (see `appBaseUrl.ts`)
+
+### `router.tsx` / `EditorPage.tsx`
+
+- **`router.tsx`**: Declares the **study** layout route and the **`/edit`** editor route (both under the Vite `base`).
+- **`EditorPage.tsx`**: Hosts `ContentEditor` for in-app authoring.
+
+### `appBaseUrl.ts`
+
+Utilities for **canonical location** and **trailing-slash** normalization so the deployed **`/requizle-web/`** base, dev redirects, and reset behavior stay consistent.
 
 ### `importValidation.ts`
 

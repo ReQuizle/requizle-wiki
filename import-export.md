@@ -2,6 +2,10 @@
 
 ReQuizle allows you to import custom content and export full profiles for backup or sharing.
 
+::: tip Authoring in the app
+You can also create and edit subjects, topics, questions, and media in the **[in-app content editor](/guide#content-editor)** (no JSON needed for routine updates). Use import/export when you want bulk data, merging, or backups.
+:::
+
 ## Importing Content
 
 1. Open the **Right Sidebar** and click the **Import** tab.

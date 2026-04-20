@@ -26,6 +26,8 @@ features:
     details: Track progress with detailed mastery percentages per subject and topic.
   - title: 6 Question Types
     details: Multiple Choice, Multiple Answer, True/False, Keywords, Matching, and Word Bank.
+  - title: In-App Content Editor
+    details: Build and maintain subjects, topics, questions, and media from a dedicated editor page, no JSON required.
   - title: Privacy First
     details: All data lives locally on your device. No servers, no accounts, no tracking.
   - title: Rich Media
