@@ -40,11 +40,12 @@ ReQuizle uses a **dynamic queue system** for efficient learning:
 
 - **New Session**: When you start studying, all questions from selected topics are loaded.
 - **Shuffling**: In "Random" mode, questions are shuffled using the Fisher-Yates algorithm.
-- **Mistake Re-queuing**: If you answer incorrectly, the question is **re-inserted 4-6 positions later** in the queue to force immediate recall.
-- **Mastery**: Correct answers mark the question as "Mastered" and remove it from the active session.
+- **Mistake Re-queuing**: If you answer incorrectly, the question is **put back in the queue** a few places ahead so you see it again soon. By default that spacing is a random **4-6** positions; you can turn this off or change the range under **Settings → Behavior** (see below).
+- **Skips**: Skipped questions use the same re-queue rules as wrong answers (also configurable).
+- **Mastery**: Correct answers mark the question as "Mastered" and remove it from the active session (unless **Include mastered** is on).
 
 ::: tip
-Toggle **"Include Mastered"** in the right sidebar to review questions you've already mastered!
+Toggle **"Include Mastered"** in the **left** sidebar (under the topic list) to review questions you've already mastered. Turning it on or off **rebuilds the queue** for the current subject so the session matches the new filter.
 :::
 
 ### Mastery Tracking
@@ -64,6 +65,18 @@ Choose how you want to study:
 |------|----------|
 | **Random** | Questions are shuffled for variety. |
 | **Topic Order** | Questions appear in the order they are defined within each topic. |
+
+You can switch modes from the **quiz header** (shuffle / list icon) or from **Settings → Behavior**; both update the same setting.
+
+### Quiz behavior (Settings)
+
+Under **Settings → Behavior** you can:
+
+- Choose **Random** vs **Topic order** (same as the header control).
+- Turn **Requeue after wrong answer** and **Requeue after skip** on or off.
+- Set **Min / Max** spacing (positions ahead) when re-queueing; values are clamped to a sensible range.
+
+Deletion confirmation toggles for subjects and profiles are in the same section.
 
 ---
 
@@ -92,8 +105,8 @@ The center area displays:
 The right sidebar has three tabs:
 
 1. **Mastery**: View progress statistics for the current subject.
-2. **Import**: Import new content via file upload or JSON paste.
-3. **Settings**: Manage profiles, export data, and configure preferences.
+2. **Import**: Import new content via **file upload**, **drag and drop** on the import area, or **paste JSON** and apply.
+3. **Settings**: Organized into sections (**Profiles**, **Appearance**, **Behavior**, **Data**, **Links & help**) for profiles, theme, quiz behavior, data tools, and documentation links.
 
 ---
 
@@ -103,7 +116,7 @@ ReQuizle supports **multiple profiles** for different users or study contexts.
 
 ### Managing Profiles
 
-- **Create**: Click the "+" button in Settings to create a new profile.
+- **Create**: In **Settings → Profiles**, use **New Profile** (or the **+** flow shown there).
 - **Switch**: Click any profile to switch to it.
 - **Rename**: Click the pencil icon to rename a profile.
 - **Delete**: Click the trash icon to delete a profile (requires typing the profile name to confirm).
@@ -185,7 +198,7 @@ Media can be added via the JSON import format (see [Import/Export](/import-expor
 
 ReQuizle includes a **built-in dark mode** for comfortable studying in any lighting condition.
 
-- Toggle the theme using the sun/moon icon in the sidebar.
+- Toggle the theme under **Settings → Appearance**.
 - Your preference is saved automatically.
 
 ---
@@ -244,7 +257,7 @@ Data can be lost if you clear app data. Always export backups of important study
 
 - Ensure you have selected a subject from the left sidebar.
 - Check that you have questions in the selected topics.
-- Try clicking "Restart Queue" in the right sidebar.
+- If the queue is empty because everything is mastered, enable **Include mastered** (left sidebar) or use **Start Over** on the completion screen. Changing topic selection or **Random / Topic order** also rebuilds the queue.
 
 ### Media Not Displaying
 

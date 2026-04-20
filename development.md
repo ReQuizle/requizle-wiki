@@ -69,7 +69,7 @@ ReQuizle uses a single global Zustand store (`useQuizStore.ts`) that handles:
 - **Profiles**: Multi-user support with independent data per profile.
 - **Session State**: Current subject, selected topics, active queue, study mode.
 - **Progress Tracking**: Detailed stats for every question (attempts, streak, mastered).
-- **Settings**: User preferences (delete confirmations, etc.).
+- **Settings**: App-wide preferences (delete confirmations, quiz re-queue behavior, spacing min/max for wrong/skip, etc.).
 
 The store uses Zustand's `persist` middleware with a custom IndexedDB storage adapter.
 
@@ -88,8 +88,8 @@ The application uses a **dynamic queue system**.
 
 1. **New Session**: Loads all questions from selected topics.
 2. **Shuffling**: Fisher-Yates shuffle is applied in "Random" mode.
-3. **Mistakes**: Incorrect answers are **re-inserted 4-6 positions later** in the queue for immediate recall reinforcement.
-4. **Mastery**: Correct answers mark the question as "Mastered" and remove it from the active session.
+3. **Mistakes / skips**: Incorrect answers (and skips, if enabled) are **re-inserted** a random number of positions ahead (default **4-6**); spacing and on/off flags are user settings (`Settings` in the store).
+4. **Mastery**: Correct answers mark the question as "Mastered" and exclude it from the pool unless **include mastered** is on. Toggling **include mastered** with an active subject **regenerates the queue**.
 
 ---
 

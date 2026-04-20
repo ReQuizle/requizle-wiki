@@ -4,6 +4,10 @@ All notable, user-facing changes to the **ReQuizle** project are documented here
 
 ## April 2026
 ### Added
+- **Import drag & drop**: Drop `.rqzl` / `.json` files onto the Import area in addition to file pick and paste.
+- **Settings layout**: Settings grouped into sections (Profiles, Appearance, Behavior, Data, Links) for easier navigation on mobile and desktop.
+- **Quiz behavior controls**: Configure re-queue after wrong answers and after skips, and set min/max reinsert spacing (defaults remain 4-6 positions).
+- **Include mastered**: Toggling **Include mastered** now rebuilds the queue when a subject is active so the session matches the filter immediately.
 - **Syntax Highlighting**: Syntax highlighting for code blocks using `react-syntax-highlighter` and the VS Code Dark theme.
 - **Markdown Features**: Added `||hidden text||` formatting for spoilers, standard markdown tables, blockquotes, and links.
 - **Inline Typography**: Added inline text formatting for `**bold**`, `*italic*`, `__underline__`, and `~~strikethrough~~`.

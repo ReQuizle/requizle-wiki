@@ -21,7 +21,7 @@ features:
   - title: Focused Study
     details: Clean, distraction-free UI with smooth animations and dark mode support.
   - title: Smart Queue System
-    details: Spaced repetition that re-queues incorrect answers for immediate recall.
+    details: Spaced repetition with shuffled or topic-ordered queues; missed and skipped cards can be re-queued with spacing you control.
   - title: Mastery Tracking
     details: Track progress with detailed mastery percentages per subject and topic.
   - title: 6 Question Types
