@@ -141,6 +141,27 @@ LaTeX rendering works in:
 
 ---
 
+## Rich Text & Markdown Support
+
+ReQuizle supports markdown parsing for text formatting.
+
+### Supported Markdown Elements
+
+| Feature | Syntax | Output |
+|---------|--------|--------|
+| **Bold** | `**text**` | **text** |
+| **Italic** | `*text*` | *text* |
+| **Underline** | `__text__` | <ins>text</ins> |
+| **Strikethrough** | `~~text~~` | ~~text~~ |
+| **Spoilers** | `\|\|hidden\|\|` | Reveals text on hover |
+| **Code Blocks** | ` ```language ` | Syntax highlighted code block |
+| **Inline Code** | `` `code` `` | Formatted inline string |
+| **Links** | `[text](url)` | Clickable URL |
+| **Blockquotes** | `> quote` | Block quotation |
+| **Tables** | `\| A \| B \|` | Standard markdown data tables |
+
+---
+
 ## Media Support
 
 Enhance your questions with **images and videos**.
