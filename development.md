@@ -126,6 +126,8 @@ requizle-web/
 │   │   ├── ContentEditor.tsx # Subject/topic/question editing UI
 │   │   ├── AppModals.tsx     # Shared confirm / prompt / message modals
 │   │   ├── QuestionCard.tsx  # Core question rendering component
+│   │   ├── RichText.tsx      # Custom Markdown/formatting engine
+│   │   ├── ErrorBoundary.tsx # Graceful error handling with skip
 │   │   ├── ThemeToggle.tsx   # Dark/light mode toggle
 │   │   ├── Latex.tsx         # KaTeX wrapper component
 │   │   ├── Logo.tsx          # ReQuizle logo
