@@ -16,14 +16,14 @@ You can also create and edit subjects, topics, questions, and media in the **[in
 
 | Extension | Content | Description |
 |-----------|---------|-------------|
-| **`.rqzl`** | Full Profile | Includes subjects, progress, settings, AND embedded media. Best for backups and sharing. |
+| **`.rqzl`** | Full Profile | Includes subjects, progress, settings, and embedded media. Best for backups and sharing. |
 | **`.json`** | Subjects or Profile | Subject lists or profile data without embedded media. |
 
 ## Exporting Profiles
 
 1. Open the **Settings** tab in the right sidebar.
 2. Click the **Download** icon next to your profile.
-3. This creates a `.rqzl` file containing all your data and images.
+3. This creates a `.rqzl` file containing your profile data and embedded media.
 
 ### Single-subject JSON (left sidebar)
 
@@ -303,10 +303,11 @@ When you export a profile, it creates a `.rqzl` file (which is just JSON) contai
     {
       "id": "media-uuid",
       "data": "data:image/png;base64,...",
-      "filename": "diagram.png"
+      "filename": "diagram.png",
+      "mimeType": "image/png"
     }
   ]
 }
 ```
 
-The `_media` array contains all embedded images/videos, making the file completely portable.
+The `_media` array contains embedded images/videos used by the exported profile, making the file portable. `mimeType` is included when available.

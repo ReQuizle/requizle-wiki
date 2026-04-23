@@ -4,7 +4,7 @@ The ReQuizle web app runs in any modern browser and can be installed as a Progre
 
 ## Links
 
-- **Live App**: [requizle.github.io/requizle-web](https://requizle.github.io/requizle-web)
+- **Live App**: [requizle.github.io](https://requizle.github.io/)
 - **Source Code**: [github.com/ReQuizle/requizle-web](https://github.com/ReQuizle/requizle-web)
 
 ## Platform-Specific Features
@@ -38,7 +38,7 @@ Once loaded, the web app works offline thanks to service worker caching. Your st
 You can author and maintain decks inside the app (no import required for day-to-day edits):
 
 - From the study UI, use **Edit content** under the ReQuizle title in the **left** sidebar.
-- **Live**: [requizle.github.io/requizle-web/edit](https://requizle.github.io/requizle-web/edit) (same **`/requizle-web/`** base as the rest of the app).
+- **Live**: [requizle.github.io/edit](https://requizle.github.io/edit) (same root base as the rest of the app).
 
 The editor covers subjects, topics, all question types, and media; changes use the same IndexedDB storage as the rest of your profile.
 
@@ -51,12 +51,10 @@ The editor covers subjects, topics, all question types, and media; changes use t
 | Safari 15+ | ✅ Full support |
 | Edge 90+ | ✅ Full support |
 
-### Keyboard Shortcuts
+### Keyboard Behavior
 
-| Action | Shortcut |
-|--------|----------|
-| Submit answer | `Enter` |
-| Skip question | `Escape` |
+- Keyword answers submit with `Enter` while the answer field is focused.
+- Buttons and dialogs use standard browser keyboard behavior, including `Enter` for focused buttons and `Escape` where a dialog or context menu supports closing.
 
 ## Development
 
@@ -69,4 +67,4 @@ npm install
 npm run dev
 ```
 
-The app uses Vite **`base: '/requizle-web/'`**. After starting the dev server, open `http://localhost:5173/requizle-web/` (trailing slash recommended). The study UI loads there; the **content editor** is at `http://localhost:5173/requizle-web/edit`.
+The app uses Vite **`base: '/'`** by default. After starting the dev server, open `http://localhost:5173/`. The study UI loads there; the **content editor** is at `http://localhost:5173/edit`. For a subdirectory deployment, set `VITE_APP_BASE` before building, for example `/requizle-web/`.

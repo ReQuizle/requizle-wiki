@@ -122,7 +122,7 @@ ReQuizle includes a **full-page content editor** so you can build decks without 
 ### How to open it
 
 - Click **Edit content** in the **left** sidebar (under the logo), or
-- Go directly to **`/requizle-web/edit`** after the app base URL (for example [requizle.github.io/requizle-web/edit](https://requizle.github.io/requizle-web/edit) when hosted, or `http://localhost:5173/requizle-web/edit` when running the dev server locally).
+- Go directly to **`/edit`** after the app base URL (for example [requizle.github.io/edit](https://requizle.github.io/edit) when hosted, or `http://localhost:5173/edit` when running the dev server locally). If you build the app with a custom `VITE_APP_BASE`, place `/edit` under that base path.
 
 The study UI and editor are separate routes; your data is shared (same profile and IndexedDB).
 
@@ -210,7 +210,7 @@ Enhance your questions with **images and videos**.
 ### Supported Formats
 
 - **Images**: PNG, JPG, GIF, WebP, SVG
-- **Videos**: MP4, WebM, OGG, MOV
+- **Videos**: MP4, WebM, OGG, MOV, AVI, MKV
 
 ### How to Add Media
 
@@ -222,12 +222,13 @@ Enhance your questions with **images and videos**.
 
 ---
 
-## Dark Mode
+## Appearance
 
-ReQuizle includes a **built-in dark mode** for comfortable studying in any lighting condition.
+ReQuizle includes appearance settings for comfortable studying in any lighting condition.
 
 - Toggle the theme under **Settings → Appearance**.
-- Your preference is saved automatically.
+- Turn the animated background on or off from the same section.
+- Your preferences are saved automatically.
 
 ---
 

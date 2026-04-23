@@ -28,13 +28,13 @@ cd requizle-web
 npm install
 ```
 
-### Local dev URL (subpath / `base`)
+### Local dev URL / `base`
 
-The web app is built with Vite **`base: '/requizle-web/'`** so assets and routing match [GitHub Pages project sites](https://docs.github.com/en/pages/getting-started-with-github-pages/about-github-pages#types-of-github-pages-sites). After `npm run dev`, open:
+The web app uses a root Vite **`base: '/'`** by default. After `npm run dev`, open:
 
-`http://localhost:5173/requizle-web/`
+`http://localhost:5173/`
 
-Prefer the URL **with a trailing slash** (the dev server may redirect `/requizle-web` → `/requizle-web/`). The **content editor** route is **`/requizle-web/edit`**.
+The study UI loads at `/`; the **content editor** route is **`/edit`**. For a subdirectory deployment, set `VITE_APP_BASE` before building, for example `/requizle-web/`. When a custom base is used, routes live under that base path.
 
 ### Available Commands
 
@@ -79,7 +79,7 @@ ReQuizle uses a single global Zustand store (`useQuizStore.ts`) that handles:
 - **Session State**: Current subject, selected topics, active queue, study mode.
 - **Progress Tracking**: Detailed stats for every question (attempts, streak, mastered).
 - **Content (editor)**: Create, rename, and delete **subjects**, **topics**, and **questions**; updates keep media references and session state coherent (including IndexedDB cleanup when content is removed).
-- **Settings**: App-wide preferences (delete confirmations, quiz re-queue behavior, spacing min/max for wrong/skip, etc.).
+- **Settings**: App-wide preferences (appearance, delete confirmations, quiz re-queue behavior, spacing min/max for wrong/skip, etc.).
 - **Import / export**: Merge behavior and `.rqzl` bundles as documented in the wiki.
 
 The store uses Zustand's `persist` middleware with a custom IndexedDB storage adapter.
@@ -193,7 +193,7 @@ The central state store containing:
 
 ### `appBaseUrl.ts`
 
-Utilities for **canonical location** and **trailing-slash** normalization so the deployed **`/requizle-web/`** base, dev redirects, and reset behavior stay consistent.
+Utilities for **canonical location** and **trailing-slash** normalization so root deployments, optional custom base paths, dev redirects, and reset behavior stay consistent.
 
 ### `importValidation.ts`
 

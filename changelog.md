@@ -4,12 +4,13 @@ All notable, user-facing changes to the **ReQuizle** project are documented here
 
 ## April 2026
 ### Added
-- **In-app content editor**: Full-page editor at **`/edit`** (under the Vite base, e.g. **`https://requizle.github.io/requizle-web/edit`**) to create, rename, and delete **subjects**, **topics**, and **questions** without JSON; all six question types, **media upload and preview** (IndexedDB, same as imports), and trimming multiple-choice / multiple-answer options (minimum two choices). Open via **Edit content** under the logo in the left sidebar. **React Router** splits study UI and editor routes; **factory reset** and bookmarks respect the **`/requizle-web/`** base and trailing-slash normalization.
+- **In-app content editor**: Full-page editor at **`/edit`** (under the Vite base, e.g. **`https://requizle.github.io/edit`** for the default root deployment) to create, rename, and delete **subjects**, **topics**, and **questions** without JSON; all six question types, **media upload and preview** (IndexedDB, same as imports), and trimming multiple-choice / multiple-answer options (minimum two choices). Open via **Edit content** under the logo in the left sidebar. **React Router** splits study UI and editor routes; **factory reset** and bookmarks respect the root deployment by default, with optional custom base paths and trailing-slash normalization.
 - **Subject export options**: Context menu can export **with progress** or **questions only** (optional `progress` in the JSON bundle).
 - **Subject & topic context menus**: Right-click a subject or topic for export, resets, delete, and topic actions; on touch devices, **press and hold** the row to open the same menu.
 - **Reset confirmations**: Settings toggles for confirming subject/topic progress resets; reset and quick-delete flows use in-app dialogs when confirmations are on.
 - **Import drag & drop**: Drop `.rqzl` / `.json` files onto the Import area in addition to file pick and paste.
 - **Settings layout**: Settings grouped into sections (Profiles, Appearance, Behavior, Data, Links) for easier navigation on mobile and desktop.
+- **Appearance controls**: Toggle the animated background from Settings → Appearance.
 - **Quiz behavior controls**: Configure re-queue after wrong answers and after skips, and set min/max reinsert spacing (defaults remain 4-6 positions).
 - **Include mastered**: Toggling **Include mastered** now rebuilds the queue when a subject is active so the session matches the filter immediately.
 - **Syntax Highlighting**: Syntax highlighting for code blocks using `react-syntax-highlighter` and the VS Code Dark theme.
@@ -39,7 +40,7 @@ All notable, user-facing changes to the **ReQuizle** project are documented here
 ### Added
 - **Media Support**: ReQuizle now supports attaching and viewing images and videos natively in questions.
 - **IndexedDB**: Completely refactored internal storage to use IndexedDB, bypassing standard browser data storage limits for massive media files.
-- **LaTeX Math Engine**: Added native rendering for `$X^2$` inline and block math statements via KaTeX.
+- **LaTeX Math Engine**: Added native rendering for `\(...\)` inline and `\[...\]` block math statements via KaTeX.
 - **Progressive Web App (PWA)**: You can now install ReQuizle to your phone, tablet, or desktop home screens to use offline natively.
 - **Confirmation Modals**: Delete warnings to prevent accidentally removing your profiles and subjects.
 - **Branding**: ReQuizle officially implemented responsive sidebars, custom-themed scrollbars, SVG logos, and a custom icon suite.
