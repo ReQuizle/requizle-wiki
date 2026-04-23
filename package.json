@@ -17,7 +17,6 @@
     "author": "ReQuizle",
     "license": "AGPL-3.0",
     "devDependencies": {
-        "gh-pages": "^6.3.0",
         "vitepress": "^1.6.4"
     },
     "overrides": {

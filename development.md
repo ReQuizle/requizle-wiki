@@ -261,7 +261,7 @@ npm install
 | `npm run dev` | Start the VitePress dev server |
 | `npm run build` | Build the documentation site |
 | `npm run preview` | Preview the built site |
-| `npm run deploy` | Deploy to GitHub Pages |
+| GitHub Actions | Deploys docs to GitHub Pages on push to `main`/`master` |
 
 ### Adding Pages
 
@@ -273,7 +273,7 @@ npm install
 
 ## Contributing
 
-### Workflow
+### Workflow (`requizle-web`)
 
 1. Fork the repository.
 2. Create a feature branch: `git checkout -b feature/amazing-feature`
@@ -281,6 +281,14 @@ npm install
 4. Run tests: `npm test`
 5. Run linter: `npm run lint`
 6. Push and open a Pull Request.
+
+### Workflow (`requizle-wiki`)
+
+1. Fork the repository.
+2. Create a feature branch: `git checkout -b docs/amazing-update`
+3. Make your documentation changes.
+4. Build docs locally: `npm run build`
+5. Push and open a Pull Request.
 
 ### Code Style
 
