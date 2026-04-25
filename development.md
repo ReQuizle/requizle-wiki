@@ -143,7 +143,7 @@ requizle-web/
 │   ├── store/
 │   │   ├── useQuizStore.ts          # Zustand store composition + persistence
 │   │   ├── quizCoreActions.ts       # Session/content/progress actions
-│   │   ├── profileSettingsActions.ts# Profile + settings actions
+│   │   ├── profileSettingsActions.ts # Profile + settings actions
 │   │   └── quizStoreHelpers.ts      # Shared store helpers
 │   │
 │   ├── context/
@@ -154,7 +154,7 @@ requizle-web/
 │   │   ├── mediaStorage.ts      # IndexedDB wrapper for runtime media blobs
 │   │   ├── archiveMedia.ts      # Collects media for subject/profile archive export
 │   │   ├── rqzlArchive.ts       # .rqzl ZIP create/parse + safety limits
-│   │   ├── useResolvedMediaUrl.ts# Media resolution hook with retry + URL lifecycle
+│   │   ├── useResolvedMediaUrl.ts # Media resolution hook with retry + URL lifecycle
 │   │   ├── indexedDBStorage.ts  # IndexedDB storage adapter for Zustand
 │   │   ├── appBaseUrl.ts        # Canonical app URL / trailing slash (base path)
 │   │   ├── contentEditor.ts     # Helpers for the editor UI
@@ -162,10 +162,9 @@ requizle-web/
 │   │
 │   └── test/                 # Test setup and utilities
 │
-├── public/                   # Static assets (icons, manifest, sample media)
-├── test-data/                # Sample JSON files for testing imports
-├── coverage/                 # Test coverage reports
-└── dist/                     # Production build output
+├── public/                   # Static assets (icons, sample media)
+├── coverage/                 # Test coverage reports (generated)
+└── dist/                     # Production build output (generated)
 ```
 
 ---

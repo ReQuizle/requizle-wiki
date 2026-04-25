@@ -186,11 +186,11 @@ By default, each import creates new content with unique auto-generated IDs. This
 {"id": "bio-101", "name": "Biology", "topics": [...]}
 ```
 
-**Without explicit IDs**, importing the same file twice creates separate copies:
+**Without explicit IDs**, importing the same file twice creates separate copies (each gets a new auto-generated ID):
 
 ```json
-{"name": "Biology", ...}  // Creates "Biology" with ID "subject-abc-0"
-{"name": "Biology", ...}  // Creates another "Biology" with ID "subject-abc-1"
+{"name": "Biology", ...}  // Creates "Biology" with a fresh ID
+{"name": "Biology", ...}  // Creates another "Biology" with a different fresh ID
 ```
 
 ### Merge Rules
