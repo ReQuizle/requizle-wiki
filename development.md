@@ -73,7 +73,7 @@ The study UI loads at `/`; the **content editor** route is **`/edit`**. For a su
 
 ### State Management (`useQuizStore`)
 
-ReQuizle uses a single global Zustand store (`useQuizStore.ts`) that handles:
+ReQuizle uses a single global Zustand store (`useQuizStore.ts`) composed from focused action/helper modules that handle:
 
 - **Profiles**: Multi-user support with independent data per profile.
 - **Session State**: Current subject, selected topics, active queue, study mode.
@@ -81,6 +81,7 @@ ReQuizle uses a single global Zustand store (`useQuizStore.ts`) that handles:
 - **Content (editor)**: Create, rename, and delete **subjects**, **topics**, and **questions**; updates keep media references and session state coherent (including IndexedDB cleanup when content is removed).
 - **Settings**: App-wide preferences (appearance, delete confirmations, quiz re-queue behavior, spacing min/max for wrong/skip, etc.).
 - **Import / export**: Merge behavior and `.rqzl` bundles as documented in the wiki.
+  - `.rqzl` is a ZIP archive (custom extension), not plain JSON.
 
 The store uses Zustand's `persist` middleware with a custom IndexedDB storage adapter.
 
@@ -140,14 +141,20 @@ requizle-web/
 │   │       └── WordBankInput.tsx
 │   │
 │   ├── store/
-│   │   └── useQuizStore.ts   # Zustand store (the "brain" of the app)
+│   │   ├── useQuizStore.ts          # Zustand store composition + persistence
+│   │   ├── quizCoreActions.ts       # Session/content/progress actions
+│   │   ├── profileSettingsActions.ts# Profile + settings actions
+│   │   └── quizStoreHelpers.ts      # Shared store helpers
 │   │
 │   ├── context/
 │   │   └── ThemeContext.tsx  # Dark mode context provider
 │   │
 │   ├── utils/
-│   │   ├── importValidation.ts  # JSON import parsing & validation
-│   │   ├── mediaStorage.ts      # IndexedDB wrapper for media files
+│   │   ├── importValidation.ts  # JSON/.rqzl payload validation & media reference handling
+│   │   ├── mediaStorage.ts      # IndexedDB wrapper for runtime media blobs
+│   │   ├── archiveMedia.ts      # Collects media for subject/profile archive export
+│   │   ├── rqzlArchive.ts       # .rqzl ZIP create/parse + safety limits
+│   │   ├── useResolvedMediaUrl.ts# Media resolution hook with retry + URL lifecycle
 │   │   ├── indexedDBStorage.ts  # IndexedDB storage adapter for Zustand
 │   │   ├── appBaseUrl.ts        # Canonical app URL / trailing slash (base path)
 │   │   ├── contentEditor.ts     # Helpers for the editor UI
@@ -208,10 +215,12 @@ Handles JSON import validation:
 
 IndexedDB wrapper for media:
 
-- `storeMedia()` - Save a data URI
+- `storeMedia()` - Save a Blob/File
 - `getMedia()` - Retrieve by ID
 - `deleteMedia()` - Remove media
 - `getAllMediaIds()` - List all stored media
+
+Export/import helpers package media as binary files inside `.rqzl` ZIP archives (`manifest.json` + `media/*`) while runtime storage remains Blob-based.
 
 ---
 

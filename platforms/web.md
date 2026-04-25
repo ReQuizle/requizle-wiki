@@ -4,7 +4,7 @@ The ReQuizle web app runs in any modern browser and can be installed as a Progre
 
 ## Links
 
-- **Live App**: [requizle.github.io](https://requizle.github.io/)
+- **Live App**: [requizle.github.io/requizle-web](https://requizle.github.io/requizle-web/)
 - **Source Code**: [github.com/ReQuizle/requizle-web](https://github.com/ReQuizle/requizle-web)
 
 ## Platform-Specific Features
@@ -21,7 +21,7 @@ ReQuizle can be installed as a standalone app:
 
 All data is stored locally in your browser using **IndexedDB**:
 
-- **Storage limit**: ~50MB+ (varies by browser)
+- **Storage quota**: Browser-managed and device-dependent (typically much larger than legacy LocalStorage limits)
 - **Persistence**: Data persists until you clear browser data
 - **Privacy**: No data leaves your device
 
@@ -38,7 +38,7 @@ Once loaded, the web app works offline thanks to service worker caching. Your st
 You can author and maintain decks inside the app (no import required for day-to-day edits):
 
 - From the study UI, use **Edit content** under the ReQuizle title in the **left** sidebar.
-- **Live**: [requizle.github.io/edit](https://requizle.github.io/edit) (same root base as the rest of the app).
+- **Live**: [requizle.github.io/requizle-web/edit](https://requizle.github.io/requizle-web/edit) (same base path as the rest of the app).
 
 The editor covers subjects, topics, all question types, and media; changes use the same IndexedDB storage as the rest of your profile.
 

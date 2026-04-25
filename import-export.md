@@ -16,21 +16,30 @@ You can also create and edit subjects, topics, questions, and media in the **[in
 
 | Extension | Content | Description |
 |-----------|---------|-------------|
-| **`.rqzl`** | Full Profile | Includes subjects, progress, settings, and embedded media. Best for backups and sharing. |
-| **`.json`** | Subjects or Profile | Subject lists or profile data without embedded media. |
+| **`.rqzl`** | Full Profile archive | ZIP archive (with `.rqzl` extension) containing manifest + media binaries. Best for backups and sharing. |
+| **`.json`** | Subjects or Profile | Subject lists or profile data (no archive media binaries; media may still be URLs/data URIs/file references). |
 
 ## Exporting Profiles
 
 1. Open the **Settings** tab in the right sidebar.
 2. Click the **Download** icon next to your profile.
-3. This creates a `.rqzl` file containing your profile data and embedded media.
+3. This creates a `.rqzl` file containing your profile data and any media files.
+
+If ReQuizle finds `idb:` media references that no longer exist in local storage, export fails with an error instead of silently generating a partial backup.
 
 ### Single-subject JSON (left sidebar)
 
-From the **subject context menu** you can download a JSON bundle for one subject:
+From the **subject context menu** you can export one subject:
 
-- **Export with progress**: Includes `requizleSubjectExport: 1`, the `subject` tree, a `progress` map (topic → question → stats), and optional `_media` for embedded images.
-- **Export questions only**: Same structure but **omits** `progress` so you can share the deck without your mastery data. Importing a questions-only file **does not** wipe existing progress for that subject.
+- **Quick Export** uses the default settings: `.rqzl`, include progress, include media.
+- **Export as...** lets you choose:
+  - format: `.rqzl`, `.zip`, or `.json`
+  - include progress on/off
+  - include media on/off
+- `requizleSubjectExport: 1` + `subject` are always included.
+- `progress` is optional (omitted when exporting questions only).
+- **JSON never includes media binaries**. If `format = json` and `include media` is enabled, export is blocked until you either disable media or choose `.rqzl`/`.zip`.
+- If referenced local `idb:` media is missing from storage, archive export fails with an explicit error instead of silently omitting files.
 
 ---
 
@@ -148,7 +157,7 @@ Here's a complete example showing **all 6 question types**:
 | `question` | ✅ | The question text (or use `prompt`). Supports LaTeX. |
 | `id` | ❌ | Auto-generated if not provided. Provide to enable merging. |
 | `explanation` | ❌ | Shown after answering. Supports LaTeX. |
-| `media` | ❌ | Image/video URL, data URI, or filename. |
+| `media` | ❌ | Image/video URL, `idb:` reference, data URI, or filename. |
 
 ### Type-Specific Fields
 
@@ -246,7 +255,7 @@ Reference files by name, you'll be prompted to upload them during import:
 }
 ```
 
-When importing, a modal will list the required files. Select them from your computer, and they'll be stored locally in your browser.
+When importing, a modal will list the required files. Select them from your computer, and they'll be stored locally in your browser (Blob-backed IndexedDB entries referenced by `idb:...`).
 
 ::: warning Media Conflicts
 If you upload a file named `diagram.png` but already have a *different* `diagram.png` stored, ReQuizle will warn you and let you choose how to resolve the conflict.
@@ -289,25 +298,28 @@ In JSON, backslashes must be escaped. Write `\\(` instead of `\(`.
 
 ## Profile Export Format (`.rqzl`)
 
-When you export a profile, it creates a `.rqzl` file (which is just JSON) containing:
+When you export a profile, it creates a `.rqzl` ZIP archive containing:
 
 ```json
 {
-  "id": "profile-id",
-  "name": "My Profile",
-  "subjects": [...],
-  "progress": {...},
-  "session": {...},
-  "createdAt": 1234567890,
-  "_media": [
+  "format": "requizle-archive-v1",
+  "payload": {
+    "id": "profile-id",
+    "name": "My Profile",
+    "subjects": [...],
+    "progress": {...},
+    "session": {...},
+    "createdAt": 1234567890
+  },
+  "media": [
     {
       "id": "media-uuid",
-      "data": "data:image/png;base64,...",
       "filename": "diagram.png",
-      "mimeType": "image/png"
+      "mimeType": "image/png",
+      "path": "media/media-uuid"
     }
   ]
 }
 ```
 
-The `_media` array contains embedded images/videos used by the exported profile, making the file portable. `mimeType` is included when available.
+Archive files include `manifest.json` (with the structure above) plus binary files under `media/`.

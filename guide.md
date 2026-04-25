@@ -66,7 +66,7 @@ Choose how you want to study:
 | **Random** | Questions are shuffled for variety. |
 | **Topic Order** | Questions appear in the order they are defined within each topic. |
 
-**Default** for new sessions is **Topic order**. You can switch modes from the **quiz header** (shuffle / list icon) or from **Settings → Behavior**; both update the same setting.
+**Default** for new sessions is **Topic order**. You can switch modes from the **quiz header** (shuffle / list icon) or from **Settings → Behavior**; both update the same setting. While answer feedback is open for the current card, the header mode toggle is temporarily disabled to avoid mid-turn queue changes.
 
 ### Quiz behavior (Settings)
 
@@ -92,7 +92,7 @@ The left sidebar contains:
 - **Edit content**: Link under the ReQuizle title opens the **[content editor](#content-editor)** (full page) to manage subjects, topics, questions, and media.
 - **Subject List**: All your subjects (whether added via import or the editor).
 - **Topic Selection**: Click topics to include/exclude them from your study session.
-- **Subject & topic context menus**: **Right-click** a subject or topic (or **press and hold** on touch devices) to export, reset progress, delete a subject, or mark a topic mastered / reset topic progress. Subject export can **include progress** or **questions only** (no mastery data).
+- **Subject & topic context menus**: Open actions via **right-click**, **press and hold** (touch), or the **actions button** on each row for keyboard-friendly access. You can export, reset progress, delete a subject, or mark/reset topic mastery. Subject export can include progress or questions only.
 - **Subject Actions**: Hover a subject row for the trash control (delete); other actions are in the context menu above.
 
 ### Center Area
@@ -122,7 +122,7 @@ ReQuizle includes a **full-page content editor** so you can build decks without 
 ### How to open it
 
 - Click **Edit content** in the **left** sidebar (under the logo), or
-- Go directly to **`/edit`** after the app base URL (for example [requizle.github.io/edit](https://requizle.github.io/edit) when hosted, or `http://localhost:5173/edit` when running the dev server locally). If you build the app with a custom `VITE_APP_BASE`, place `/edit` under that base path.
+- Go directly to **`/edit`** after the app base URL (for example [requizle.github.io/requizle-web/edit](https://requizle.github.io/requizle-web/edit) when hosted, or `http://localhost:5173/edit` when running the dev server locally). If you build the app with a custom `VITE_APP_BASE`, place `/edit` under that base path.
 
 The study UI and editor are separate routes; your data is shared (same profile and IndexedDB).
 
@@ -132,7 +132,7 @@ The study UI and editor are separate routes; your data is shared (same profile a
 - **Topics**: Add, rename, or delete topics within a subject.
 - **Questions**: Add questions for any of the **six** supported types; edit prompts, answers, explanations, and type-specific fields.
 - **Multiple choice / multiple answer**: Add or remove answer choices (at least **two** choices must remain).
-- **Media**: Attach images or videos per question; preview and remove attachments. Uploaded media is stored locally like imported media (`idb:` references).
+- **Media**: Attach images or videos per question; preview and remove attachments. Uploaded media is stored locally as Blob-backed IndexedDB entries (`idb:` references).
 
 Changes save into your active profile the same way as study progress.
 
@@ -149,6 +149,7 @@ ReQuizle supports **multiple profiles** for different users or study contexts.
 - **Rename**: Click the pencil icon to rename a profile.
 - **Delete**: Click the trash icon to delete a profile (requires typing the profile name to confirm).
 - **Export**: Click the download icon to export a profile as a `.rqzl` file.
+- **Export errors**: If a profile references local media that no longer exists in IndexedDB, export fails with an explicit error instead of silently creating a partial archive.
 
 ### What's Stored Per Profile
 
