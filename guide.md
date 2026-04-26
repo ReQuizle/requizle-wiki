@@ -145,7 +145,7 @@ ReQuizle supports **multiple profiles** for different users or study contexts.
 
 - **Create**: In **Settings → Profiles**, use **New Profile**.
 - **Switch**: Click any profile to switch to it.
-- **Profile actions**: Open the profile context menu via **right-click**, **press and hold** (touch), or the **actions button** on the card. From there you can **rename**, **export** as `.rqzl`, or **delete** (delete requires typing the profile name to confirm if confirmation is enabled).
+- **Profile actions**: Open the profile context menu via **right-click**, **press and hold** (touch), or the **actions button** on the card. From there you can **rename**, **export** (quick `.rqzl`), **export as...** (choose `.rqzl`/`.zip`/`.json`, plus include progress/media toggles), or **delete** (delete requires typing the profile name to confirm if confirmation is enabled).
 - **Export errors**: If a profile references local media that no longer exists in IndexedDB, export fails with an explicit error instead of silently creating a partial archive.
 
 ### What's Stored Per Profile

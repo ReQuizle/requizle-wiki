@@ -21,11 +21,15 @@ You can also create and edit subjects, topics, questions, and media in the **[in
 
 ## Exporting Profiles
 
-1. Open the **Settings** tab in the right sidebar.
-2. Click the **Download** icon next to your profile.
-3. This creates a `.rqzl` file containing your profile data and any media files.
+Open the **Settings → Profiles** section, then open the profile **context menu** (right-click, press and hold on touch, or the actions button on the card).
 
-If ReQuizle finds `idb:` media references that no longer exist in local storage, export fails with an error instead of silently generating a partial backup.
+- **Export** uses the default settings: `.rqzl`, include progress, include media.
+- **Export as...** lets you choose:
+  - format: `.rqzl`, `.zip`, or `.json`
+  - include progress on/off
+  - include media on/off
+- **JSON never includes media binaries**. If `format = json` and `include media` is enabled, export is blocked until you either disable media or choose `.rqzl`/`.zip`.
+- If referenced local `idb:` media is missing from storage, archive export fails with an explicit error instead of silently omitting files.
 
 ### Single-subject JSON (left sidebar)
 

@@ -5,7 +5,7 @@ layout: home
 hero:
   name: "ReQuizle"
   text: "Spaced Repetition Study Tool"
-  tagline: A modern, privacy-focused app for mastering any subject through active recall.
+  tagline: A modern app for mastering any subject through active recall.
   image:
     src: /icon.svg
     alt: ReQuizle Logo
