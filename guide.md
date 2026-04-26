@@ -93,7 +93,6 @@ The left sidebar contains:
 - **Subject List**: All your subjects (whether added via import or the editor).
 - **Topic Selection**: Click topics to include/exclude them from your study session.
 - **Subject & topic context menus**: Open actions via **right-click**, **press and hold** (touch), or the **actions button** on each row for keyboard-friendly access. You can export, reset progress, delete a subject, or mark/reset topic mastery. Subject export can include progress or questions only.
-- **Subject Actions**: Hover a subject row for the trash control (delete); other actions are in the context menu above.
 
 ### Center Area
 
@@ -144,11 +143,9 @@ ReQuizle supports **multiple profiles** for different users or study contexts.
 
 ### Managing Profiles
 
-- **Create**: In **Settings → Profiles**, use **New Profile** (or the **+** flow shown there).
+- **Create**: In **Settings → Profiles**, use **New Profile**.
 - **Switch**: Click any profile to switch to it.
-- **Rename**: Click the pencil icon to rename a profile.
-- **Delete**: Click the trash icon to delete a profile (requires typing the profile name to confirm).
-- **Export**: Click the download icon to export a profile as a `.rqzl` file.
+- **Profile actions**: Open the profile context menu via **right-click**, **press and hold** (touch), or the **actions button** on the card. From there you can **rename**, **export** as `.rqzl`, or **delete** (delete requires typing the profile name to confirm if confirmation is enabled).
 - **Export errors**: If a profile references local media that no longer exists in IndexedDB, export fails with an explicit error instead of silently creating a partial archive.
 
 ### What's Stored Per Profile
