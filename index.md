@@ -19,7 +19,7 @@ hero:
 
 features:
   - title: Focused Study
-    details: Clean, distraction-free UI with smooth animations and dark mode support.
+    details: Clean, distraction-free UI with smooth animations, dark mode, and optional accent colors.
   - title: Smart Queue System
     details: Spaced repetition with shuffled or topic-ordered queues; missed and skipped cards can be re-queued with spacing you control.
   - title: Mastery Tracking
@@ -30,8 +30,8 @@ features:
     details: Build and maintain subjects, topics, questions, and media from a dedicated editor page, no JSON required.
   - title: Privacy First
     details: All data lives locally on your device. No servers, no accounts, no tracking.
-  - title: Rich Media
-    details: Support for images, videos, and LaTeX math equations in questions.
+  - title: Rich content
+    details: Markdown-style text, syntax-highlighted code blocks, images, videos, and LaTeX in questions.
   - title: Multiple Profiles
     details: Create and manage separate profiles for different users or study contexts.
   - title: Cross-Platform

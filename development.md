@@ -66,6 +66,11 @@ The study UI loads at `/`; the **content editor** route is **`/edit`**. For a su
 | **Vitest** | Unit testing framework |
 | **canvas-confetti** | Celebration animations |
 | **Lucide React** | Icon library |
+| **JSZip** | `.rqzl` archive (ZIP) read/write |
+| **uuid** | Media and entity IDs |
+| **clsx** | Conditional `className` strings |
+| **react-syntax-highlighter** (Prism) | Fenced code blocks in questions |
+| **Tailwind** + **CSS variables** | `indigo` / `slate` map to `--accent-*` / `--surface-*` (see `colorThemes.ts`, `applyDocumentTheme`) |
 
 ---
 
@@ -107,65 +112,131 @@ The application uses a **dynamic queue system**.
 
 ## Project Structure
 
+The tree below lists **every** source file and top-level project asset. Trailing `# …` comments summarize each path. Update the tree (and this section) when you add, rename, or remove files. Generated outputs (`coverage/`, `dist/`) and `node_modules/` are omitted from the list but may appear on disk.
+
 ```
 requizle-web/
-├── src/
-│   ├── App.tsx               # Root: theme + router outlet
-│   ├── main.tsx              # Entry: URL normalization, React mount
-│   ├── router.tsx            # Routes: study layout vs. /edit
-│   ├── index.css             # Global styles (Tailwind imports)
-│   ├── types.ts              # Global TypeScript interfaces
-│   │
-│   ├── pages/
-│   │   └── EditorPage.tsx    # Full-page content editor route
-│   │
-│   ├── components/
-│   │   ├── Layout.tsx        # Main layout wrapper
-│   │   ├── LeftSidebar.tsx   # Subject/topic navigation, link to editor
-│   │   ├── CenterArea.tsx    # Question display area
-│   │   ├── RightSidebar.tsx  # Mastery, Import, Settings tabs
-│   │   ├── ContentEditor.tsx # Subject/topic/question editing UI
-│   │   ├── AppModals.tsx     # Shared confirm / prompt / message modals
-│   │   ├── QuestionCard.tsx  # Core question rendering component
-│   │   ├── RichText.tsx      # Custom Markdown/formatting engine
-│   │   ├── ErrorBoundary.tsx # Graceful error handling with skip
-│   │   ├── ThemeToggle.tsx   # Dark/light mode toggle
-│   │   ├── Latex.tsx         # KaTeX wrapper component
-│   │   ├── Logo.tsx          # ReQuizle logo
-│   │   └── inputs/           # Question type input components
-│   │       ├── MultipleChoiceInput.tsx
-│   │       ├── MultipleAnswerInput.tsx
-│   │       ├── TrueFalseInput.tsx
-│   │       ├── KeywordsInput.tsx
-│   │       ├── MatchingInput.tsx
-│   │       └── WordBankInput.tsx
-│   │
-│   ├── store/
-│   │   ├── useQuizStore.ts          # Zustand store composition + persistence
-│   │   ├── quizCoreActions.ts       # Session/content/progress actions
-│   │   ├── profileSettingsActions.ts # Profile + settings actions
-│   │   └── quizStoreHelpers.ts      # Shared store helpers
-│   │
-│   ├── context/
-│   │   └── ThemeContext.tsx  # Dark mode context provider
-│   │
-│   ├── utils/
-│   │   ├── importValidation.ts  # JSON/.rqzl payload validation & media reference handling
-│   │   ├── mediaStorage.ts      # IndexedDB wrapper for runtime media blobs
-│   │   ├── archiveMedia.ts      # Collects media for subject/profile archive export
-│   │   ├── rqzlArchive.ts       # .rqzl ZIP create/parse + safety limits
-│   │   ├── useResolvedMediaUrl.ts # Media resolution hook with retry + URL lifecycle
-│   │   ├── indexedDBStorage.ts  # IndexedDB storage adapter for Zustand
-│   │   ├── appBaseUrl.ts        # Canonical app URL / trailing slash (base path)
-│   │   ├── contentEditor.ts     # Helpers for the editor UI
-│   │   └── quizLogic.ts         # Pure functions for scoring/queueing
-│   │
-│   └── test/                 # Test setup and utilities
-│
-├── public/                   # Static assets (icons, sample media)
-├── coverage/                 # Test coverage reports (generated)
-└── dist/                     # Production build output (generated)
+├── .github/
+│   └── workflows/
+│       └── ci.yml                 # GitHub Actions: lint, test:coverage, build
+├── LICENSE                        # AGPL-3.0
+├── README.md
+├── .gitignore
+├── index.html                     # Vite app shell, PWA meta
+├── package.json
+├── package-lock.json
+├── postcss.config.js
+├── tailwind.config.js            # `indigo` / `slate` → CSS variables for accents
+├── tsconfig.json
+├── tsconfig.app.json
+├── tsconfig.node.json
+├── vite.config.ts
+├── vitest.config.ts
+├── eslint.config.js
+├── public/
+│   ├── 404.html                   # Static fallback (GitHub Pages)
+│   ├── icon-192.png
+│   ├── icon-512.png
+│   ├── icon.svg
+│   ├── sample-image.svg
+│   └── sample-video.mov
+├── coverage/                      # (generated) `npm run test:coverage`
+├── dist/                          # (generated) `npm run build`
+└── src/
+    ├── App.tsx                    # `ThemeProvider`, `ColorThemeApplier`, `AppRoutes`
+    ├── main.tsx                   # entry: URL normalize, `createRoot`, `StrictMode`
+    ├── router.tsx                # `BrowserRouter`, study shell, `/edit`, 404
+    ├── index.css                 # global styles, Tailwind layers, `btn`, progress
+    ├── types.ts                  # `Question` union, `Profile`, `SessionState`, …
+    ├── context/
+    │   └── ThemeContext.tsx      # `light` / `dark` on `documentElement`
+    ├── pages/
+    │   ├── EditorPage.tsx         # full-page `ContentEditor` host
+    │   └── NotFoundPage.tsx      # non-route UI
+    ├── test/
+    │   └── setup.ts              # Vitest + Testing Library
+    ├── store/
+    │   ├── useQuizStore.ts            # Zustand root, persist, re-exports
+    │   ├── useQuizStore.test.ts        # store hydration, actions
+    │   ├── profileSettingsActions.ts   # settings + import/profile slice
+    │   ├── quizCoreActions.ts          # session, queue, submit, content CRUD
+    │   └── quizStoreHelpers.ts         # getCurrent*, merge, media cleanup helpers
+    ├── utils/
+    │   ├── appBaseUrl.ts               # base URL, trailing slash, SPA fallback query
+    │   ├── appBaseUrl.test.ts
+    │   ├── archiveMedia.ts            # collect blobs for .rqzl export
+    │   ├── array.ts                   # small helpers (e.g. shuffle)
+    │   ├── colorThemes.ts             # accent presets, `applyDocumentTheme`, monochrome
+    │   ├── colorThemes.test.ts
+    │   ├── contentEditor.ts            # editor-only helpers
+    │   ├── download.ts                # trigger browser download
+    │   ├── fileReaders.ts              # `File` / `ArrayBuffer` readers
+    │   ├── importValidation.ts         # JSON / profile payload validation
+    │   ├── importValidation.test.ts
+    │   ├── indexedDBStorage.ts         # Zustand persist adapter (IDB)
+    │   ├── indexedDBStorage.test.ts
+    │   ├── mediaFormat.ts              # size / label helpers
+    │   ├── mediaStorage.ts            # `idb:` blob get/put/delete
+    │   ├── mediaStorage.test.ts
+    │   ├── quizLogic.ts                # queue, scoring, requeue gaps (pure)
+    │   ├── quizLogic.test.ts
+    │   ├── rqzlArchive.ts              # .rqzl zip read/write, limits
+    │   ├── rqzlArchive.test.ts
+    │   ├── typeGuards.ts               # `isRecord`, narrowers
+    │   ├── useLongPress.ts            # touch long-press hook (menus)
+    │   ├── useResolvedMediaUrl.ts     # `idb:` → object URL, revoke
+    │   └── validationHelpers.ts
+    └── components/
+        ├── AnimatedBackground.tsx       # optional ambient background (accent)
+        ├── AppModals.tsx              # shared confirm, prompt, simple modal
+        ├── CenterArea.tsx              # current question, queue controls
+        ├── ColorThemeApplier.tsx       # sync CSS vars to store
+        ├── ContentEditor.tsx          # in-app subject/topic/question editor
+        ├── ContextMenu.tsx            # reusable anchored menu
+        ├── ErrorBoundary.tsx          # per-question error + skip
+        ├── ExportOptionsModal.tsx     # format / progress / media options
+        ├── inputs/                    # study-mode answer UIs
+        │   ├── KeywordsInput.tsx
+        │   ├── KeywordsInput.test.tsx
+        │   ├── MatchingInput.tsx
+        │   ├── MatchingInput.test.tsx
+        │   ├── MultipleAnswerInput.tsx
+        │   ├── MultipleAnswerInput.test.tsx
+        │   ├── MultipleChoiceInput.tsx
+        │   ├── MultipleChoiceInput.test.tsx
+        │   ├── TrueFalseInput.tsx
+        │   ├── TrueFalseInput.test.tsx
+        │   ├── WordBankInput.tsx
+        │   └── WordBankInput.test.tsx
+        ├── Layout.tsx                 # shell: left/center/right slots, responsive drawers
+        ├── LeftSidebar.tsx            # subjects, topics, editor link, export
+        ├── leftSidebar/
+        │   └── SidebarContextMenu.tsx  # subject/topic row actions
+        ├── Logo.tsx
+        ├── modalA11y.ts               # focus trap, restore, Escape
+        ├── QuestionCard.tsx            # question shell + input dispatch
+        ├── QuestionCard.test.tsx
+        ├── RichText.tsx                # markdown-ish parser + code + math
+        ├── RichText.test.tsx
+        ├── RightSidebar.tsx           # tabs: mastery, import, settings
+        ├── rightSidebar/
+        │   ├── PendingMediaImportModal.tsx
+        │   ├── PendingMediaImportModal.test.tsx
+        │   ├── SidebarTabs.tsx
+        │   ├── useImportWorkflow.ts   # import file flow state machine
+        │   ├── useImportWorkflow.test.tsx
+        │   └── settings/              # settings tab panels
+        │       ├── AppearanceSettingsSection.tsx
+        │       ├── BehaviorSettingsSection.tsx
+        │       ├── DataSettingsSection.tsx
+        │       ├── LinksSettingsSection.tsx
+        │       ├── ProfilesSettingsSection.tsx
+        │       └── SettingsSwitchRow.tsx
+        ├── ThemeToggle.tsx
+        └── ThemeToggle.test.tsx
 ```
+
+A `.test.ts` / `.test.tsx` file unit-tests the same-named source (e.g. `quizLogic.test.ts` → `quizLogic.ts`).
 
 ---
 
@@ -192,10 +263,11 @@ The central state store containing:
 - Media cleanup on subject deletion
 - **Factory reset** navigates to the canonical base URL (see `appBaseUrl.ts`)
 
-### `router.tsx` / `EditorPage.tsx`
+### `router.tsx` / `EditorPage.tsx` / `NotFoundPage.tsx`
 
-- **`router.tsx`**: Declares the **study** layout route and the **`/edit`** editor route (both under the Vite `base`).
+- **`router.tsx`**: Declares the **study** layout route, the **`/edit`** editor route, and a **catch-all** 404 (both under the Vite `base`).
 - **`EditorPage.tsx`**: Hosts `ContentEditor` for in-app authoring.
+- **`NotFoundPage.tsx`**: Renders the app’s not-found state when a route is unknown.
 
 ### `appBaseUrl.ts`
 
@@ -242,13 +314,7 @@ npx vitest
 
 ### Test Files
 
-Test files are co-located with their source files using the `.test.ts` or `.test.tsx` suffix:
-
-- `QuestionCard.test.tsx`
-- `useQuizStore.test.ts`
-- `importValidation.test.ts`
-- `quizLogic.test.ts`
-- etc.
+Test files are co-located with their source files using the `.test.ts` or `.test.tsx` suffix. See the **`src/`** tree in [Project structure](#project-structure) for the full list.
 
 ---
 
@@ -297,6 +363,8 @@ npm install
 3. Make your documentation changes.
 4. Build docs locally: `npm run build`
 5. Push and open a Pull Request.
+
+**Changelog** (`changelog.md`): add **web app** user-facing updates as **dated** sections, **newest first** (sourced from [requizle-web](https://github.com/ReQuizle/requizle-web) `git log --date=short` author dates). Do not list wiki-only edits there. Same-day work can sit under one date.
 
 ### Code Style
 

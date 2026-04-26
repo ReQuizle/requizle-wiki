@@ -224,8 +224,9 @@ Enhance your questions with **images and videos**.
 
 ReQuizle includes appearance settings for comfortable studying in any lighting condition.
 
-- Toggle the theme under **Settings → Appearance**.
-- Turn the animated background on or off from the same section.
+- Toggle the **light/dark theme** under **Settings → Appearance**.
+- Choose an **accent** preset (or **Custom** to pick a hex), or use **Monochrome** for a neutral, hue-free look.
+- Turn the **animated background** on or off in the same section.
 - Your preferences are saved automatically.
 
 ---

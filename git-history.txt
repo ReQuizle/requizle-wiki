@@ -1,0 +1,28 @@
+1b528c8 2026-04-26 Update documentation for profile actions and export options
+156a2e4 2026-04-26 Refine guide documentation
+68e0cfe 2026-04-25 Corrections to wiki documentation
+b566fee 2026-04-25 Update documentation for content editor, export formats, and media handling; clarify app base paths and error handling for missing media in exports.
+3533bbc 2026-04-23 Update development documentation to clarify deployment process and add workflows
+3bd8bd8 2026-04-23 Update documentation
+e51a699 2026-04-22 docs: add RichText and ErrorBoundary components to development documentation structure
+ad4e287 2026-04-20 docs: document content editor, routing, and dev URLs; refresh changelog and credits alignment
+05d5ad2 2026-04-20 Add context menus, questions-only export, reset confirmation settings, topic-order default, and April changelog polish
+69607b8 2026-04-20 Sync user and dev docs with app behavior
+387b057 2026-04-20 Merge branch 'main' of https://github.com/ReQuizle/requizle-wiki
+4f05be9 2026-04-20 Add changelog and document rich text features
+777d11f 2026-04-20 Delete .vitepress/cache directory
+0bc8271 2026-02-02 Fix grammar in local file references section
+d6abbcd 2026-02-02 Remove test data section from development.md
+9ab8ead 2026-02-01 fix: simplify description of dynamic queue system in development guide
+2ba2789 2026-02-01 fix: update Cross-Platform feature details for clarity
+c5ee99d 2026-02-01 refactor: update dependencies and improve documentation
+2eca804 2026-02-01 Fix package-lock.json
+4f7ae64 2026-02-01 feat: update navigation and sidebar structure; enhance user guide and add web app documentation
+6e0b808 2026-02-01 fix: add head configuration for favicon in VitePress setup
+c3491ec 2026-02-01 chore: update documentation and improve user guide; remove unused files and enhance .gitignore
+3cfc4b5 2026-01-31 Fix list formatting in conflict resolution docs
+3da8c2b 2026-01-31 Correctly explain path identity logic
+425e987 2026-01-31 Clarify local file reference behavior
+b518208 2026-01-31 Refine docs based on deep code review
+7591bbb 2026-01-31 Fix build error
+9cf9f4b 2026-01-31 Initial commit of ReQuizle Wiki
