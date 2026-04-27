@@ -19,7 +19,7 @@ hero:
 
 features:
   - title: Focused Study
-    details: Clean, distraction-free UI with smooth animations, dark mode, and optional accent colors.
+    details: Clean, distraction-free UI with smooth animations, dark mode, optional accent colors, and optional sound feedback.
   - title: Smart Queue System
     details: Spaced repetition with shuffled or topic-ordered queues; missed and skipped cards can be re-queued with spacing you control.
   - title: Mastery Tracking

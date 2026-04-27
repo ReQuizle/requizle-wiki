@@ -29,6 +29,10 @@ All data is stored locally in your browser using **IndexedDB**:
 Clearing browser data or using "private/incognito" mode will delete your progress. Use the Export feature to back up your data.
 :::
 
+### Optional sound feedback
+
+Quiz feedback uses the browser **Web Audio API** (short tones; no extra downloads). You can turn this off under **Settings → Personalization → Sound effects**. Some browsers only unlock audio after a click or tap on the page.
+
 ### Offline Support
 
 Once loaded, the web app works offline thanks to service worker caching. Your study sessions won't be interrupted by network issues.

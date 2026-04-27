@@ -2,6 +2,9 @@
 
 All notable, user-facing changes to the **ReQuizle** web app are listed **newest first**. Section **dates** match **author commit dates** in [requizle-web](https://github.com/ReQuizle/requizle-web). To check or add a date, run `git log --date=short` in that repository. Same-day batches are grouped in one heading.
 
+## 27 April 2026
+- **Settings → Personalization** (renamed from **Appearance**): same theme, accent, and animated background controls; new optional **sound effects** for answer feedback (Web Audio; toggle in the same section).
+
 ## 26 April 2026
 - **Settings → Appearance**: **accent** color (presets, **Monochrome**, or **Custom** hex), with panels and text chroma that follow the chosen accent. Optional **animated background**; **light/dark** is unchanged. Primary buttons use a contrast color so **Monochrome** in dark mode stays legible.
 - **Export as** for **subjects** and **profiles** uses a shared **Export options** flow (replaces the old subject-only modal pattern), with the same kinds of choices for both. Small **CSS** cleanup the same day.

@@ -84,7 +84,7 @@ ReQuizle uses a single global Zustand store (`useQuizStore.ts`) composed from fo
 - **Session State**: Current subject, selected topics, active queue, study mode.
 - **Progress Tracking**: Detailed stats for every question (attempts, streak, mastered).
 - **Content (editor)**: Create, rename, and delete **subjects**, **topics**, and **questions**; updates keep media references and session state coherent (including IndexedDB cleanup when content is removed).
-- **Settings**: App-wide preferences (appearance, delete confirmations, quiz re-queue behavior, spacing min/max for wrong/skip, etc.).
+- **Settings**: App-wide preferences (personalization: theme, accent, animated background, sound effects; delete confirmations; quiz re-queue behavior; spacing min/max for wrong/skip, etc.).
 - **Import / export**: Merge behavior and `.rqzl` bundles as documented in the wiki.
   - `.rqzl` is a ZIP archive (custom extension), not plain JSON.
 
@@ -182,6 +182,7 @@ requizle-web/
     │   ├── quizLogic.test.ts
     │   ├── rqzlArchive.ts              # .rqzl zip read/write, limits
     │   ├── rqzlArchive.test.ts
+    │   ├── soundEffects.ts             # Web Audio feedback (correct, wrong, skip, continue)
     │   ├── typeGuards.ts               # `isRecord`, narrowers
     │   ├── useLongPress.ts            # touch long-press hook (menus)
     │   ├── useResolvedMediaUrl.ts     # `idb:` → object URL, revoke
@@ -226,7 +227,7 @@ requizle-web/
         │   ├── useImportWorkflow.ts   # import file flow state machine
         │   ├── useImportWorkflow.test.tsx
         │   └── settings/              # settings tab panels
-        │       ├── AppearanceSettingsSection.tsx
+        │       ├── PersonalizationSettingsSection.tsx
         │       ├── BehaviorSettingsSection.tsx
         │       ├── DataSettingsSection.tsx
         │       ├── LinksSettingsSection.tsx

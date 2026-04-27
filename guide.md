@@ -110,7 +110,7 @@ The right sidebar has three tabs:
 
 1. **Mastery**: View progress statistics for the current subject.
 2. **Import**: Import new content via **file upload**, **drag and drop** on the import area, or **paste JSON** and apply.
-3. **Settings**: Organized into sections (**Profiles**, **Appearance**, **Behavior**, **Data**, **Links & help**) for profiles, theme, quiz behavior, data tools, and documentation links.
+3. **Settings**: Organized into sections (**Profiles**, **Personalization**, **Behavior**, **Data**, **Links & help**) for profiles, theme and audio, quiz behavior, data tools, and documentation links.
 
 ---
 
@@ -220,13 +220,14 @@ Enhance your questions with **images and videos**.
 
 ---
 
-## Appearance
+## Personalization
 
-ReQuizle includes appearance settings for comfortable studying in any lighting condition.
+ReQuizle includes personalization settings for comfortable studying in any lighting condition, plus optional audio feedback.
 
-- Toggle the **light/dark theme** under **Settings → Appearance**.
+- Toggle the **light/dark theme** under **Settings → Personalization**.
 - Choose an **accent** preset (or **Custom** to pick a hex), or use **Monochrome** for a neutral, hue-free look.
 - Turn the **animated background** on or off in the same section.
+- Turn **Sound effects** on or off (short tones for correct, incorrect, skip, and continue).
 - Your preferences are saved automatically.
 
 ---
