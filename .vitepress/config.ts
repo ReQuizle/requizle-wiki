@@ -5,6 +5,7 @@ export default defineConfig({
   title: "ReQuizle Docs",
   description: "Documentation for ReQuizle",
   base: '/requizle-wiki/',
+  srcExclude: ['**/README.md'],
   head: [
     ['link', { rel: 'icon', type: 'image/svg+xml', href: '/requizle-wiki/icon.svg' }],
   ],
