@@ -4,7 +4,7 @@
 
 <img src="public/icon.svg" alt="ReQuizle Logo" width="250">
 
-Documentation and user guides for ReQuizle, a modern web application designed for active recall and spaced repetition study.
+Documentation and user guides for the ReQuizle study application.
 
 The documentation is powered by [VitePress](https://vitepress.dev/) and automatically compiled and deployed to GitHub Pages.
 
@@ -36,7 +36,7 @@ Start the local documentation development server:
 npm run dev
 ```
 
-Open **http://localhost:5173/** in your browser to view and edit the documentation in real-time.
+Open **http://localhost:5173/** in your browser to preview the documentation while editing it.
 
 ## Development
 

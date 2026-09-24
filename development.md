@@ -17,7 +17,7 @@ ReQuizle is split into two repositories:
 
 ### Prerequisites
 
-- **Node.js** 18+ (LTS recommended)
+- **Node.js** 20.19+ or 22.12+
 - **npm** 9+
 
 ### Setup
