@@ -10,10 +10,10 @@ The documentation is powered by [VitePress](https://vitepress.dev/) and automati
 
 ## Features
 
-- **Comprehensive Guides**: Explanations for all core active recall mechanics
-- **Interactive Formatting Info**: Complete details on LaTeX math notation and Markdown text support
+- **User Guides**: Explanations of the application's active recall workflow
+- **Formatting Reference**: Details on LaTeX math notation and Markdown text support
 - **Developer Documentation**: Instructions on local setup, testing workflows, and database schema mappings
-- **File Format Specs**: Complete JSON schema guides for custom `.rqzl` subject imports and profile migrations
+- **File Format Reference**: JSON schema guides for `.rqzl` subject imports and profile migrations
 
 ## Prerequisites
 
